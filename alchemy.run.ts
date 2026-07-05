@@ -1,10 +1,10 @@
 // op0-landing — Alchemy v2 deploy definition.
 // Deploy with: CLOUDFLARE_API_TOKEN=… CLOUDFLARE_ACCOUNT_ID=… alchemy deploy --stage preview
-// (Requires alchemy@next installed via npm/bun. The static-port Worker can also be deployed
-//  manually without Alchemy — see README "Option B".)
+// (Requires alchemy@next. Run `npm run build && node scripts/build-worker.cjs` first to produce
+//  dist/worker.js — the all-in-one Worker. The manual executor/wrangler path also deploys that file.)
 //
 // ponytail: this is the Alchemy-ready path for when a package manager is available.
-// It deploys the same single-file Worker as the manual path, just via IaC.
+// It deploys the same all-in-one Worker as the manual path, just via IaC.
 
 import alchemy from "alchemy";
 import { Worker } from "alchemy/cloudflare";
