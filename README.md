@@ -16,7 +16,7 @@ The op0.dev landing page — **redesigned** with [cordrun-skills](https://github
 src/index.html   — the redesigned landing page (self-contained, shadcn static-port)
 src/worker.js    — Cloudflare Worker that serves the HTML (dev/source form)
 dist/worker.js   — built single-file Worker (HTML inlined) — what actually deploys
-scripts/build.js — inlines index.html into dist/worker.js (no bundler needed)
+scripts/build.cjs — inlines index.html into dist/worker.js (no bundler needed)
 alchemy.run.ts   — Alchemy v2 deploy definition (Workers + assets) — for when npm is available
 wrangler.jsonc   — manual wrangler fallback deploy config
 ```
@@ -39,7 +39,7 @@ CLOUDFLARE_API_TOKEN=… CLOUDFLARE_ACCOUNT_ID=… alchemy deploy --stage previe
 ### Option B — manual Worker upload (no npm; current path)
 
 ```bash
-node scripts/build.js                    # inlines index.html → dist/worker.js
+node scripts/build.cjs                    # inlines index.html → dist/worker.js
 # then PUT dist/worker.js to /accounts/{id}/workers/scripts/op0-landing-preview
 # (the executor Cloudflare connection does this via the multipart metadata + module form)
 ```
